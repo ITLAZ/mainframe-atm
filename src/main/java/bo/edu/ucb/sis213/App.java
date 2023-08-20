@@ -2,7 +2,6 @@ package bo.edu.ucb.sis213;
 
 import java.util.Scanner;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,25 +11,6 @@ public class App {
     private static double saldo;
     private static int pinActual;
 
-    private static final String HOST = "127.0.0.1";
-    private static final int PORT = 3306;
-    private static final String USER = "root";
-    private static final String PASSWORD = "123456";
-    private static final String DATABASE = "atm";
-
-    public static Connection getConnection() throws SQLException {
-        String jdbcUrl = String.format("jdbc:mysql://%s:%d/%s", HOST, PORT, DATABASE);
-        try {
-            // Asegúrate de tener el driver de MySQL agregado en tu proyecto
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new SQLException("MySQL Driver not found.", e);
-        }
-
-        return DriverManager.getConnection(jdbcUrl, USER, PASSWORD);
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int intentos = 3;
@@ -39,7 +19,7 @@ public class App {
 
         Connection connection = null;
         try {
-            connection = getConnection(); // Reemplaza esto con tu conexión real
+            connection = Conexion.getConnection(); // Reemplaza esto con tu conexión real
         } catch (SQLException ex) {
             System.err.println("No se puede conectar a Base de Datos");
             ex.printStackTrace();
@@ -83,7 +63,7 @@ public class App {
         }
         return false;
     }
-
+    
     public static void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -134,7 +114,7 @@ public class App {
             System.out.println("Cantidad no válida.");
         } else {
             try {
-                connection = getConnection();
+                connection = Conexion.getConnection();
                 connection.setAutoCommit(false);
                 String Query = "UPDATE usuarios SET saldo = saldo + ? WHERE id = ?";
                 PreparedStatement updateStatement = connection.prepareStatement(Query);
@@ -183,7 +163,7 @@ public class App {
             System.out.println("Saldo insuficiente para realizar la transaccion.");
         } else {
             try {
-                connection = getConnection();
+                connection = Conexion.getConnection();
                 connection.setAutoCommit(false);
     
                 // Actualizar el saldo en la base de datos
@@ -237,7 +217,7 @@ public class App {
     
             if (nuevoPin == conPin) {
                 try {
-                    connection = getConnection();
+                    connection = Conexion.getConnection();
                     connection.setAutoCommit(false);
     
                     String Query = "UPDATE usuarios SET pin = ? WHERE id = ?";
