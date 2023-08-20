@@ -52,7 +52,7 @@ Desarrollar un programa interactivo en línea de comandos que simule las operaci
 
 Para correr este proyecto debe tener instalado:
 
- - Java 11
+ - Java 20
  - Maven 3.8.4
 
 Se recomienda utilizar sdkman (Linux)
@@ -68,7 +68,7 @@ mvn clean install
 ## Ejecución
 
 ```
-mvn exec:java -Dexec.mainClass="bo.edu.ucb.sis213.App"
+mvn exec:java
 ```
 
 ## Instalación de la Base de Datos
