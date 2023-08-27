@@ -1,5 +1,7 @@
 package bo.edu.ucb.sis213.view;
 
+import javax.swing.JOptionPane;
+
 import bo.edu.ucb.sis213.BL.Funciones;
 
 public class menu extends javax.swing.JFrame {
@@ -130,7 +132,8 @@ public class menu extends javax.swing.JFrame {
         cp.setVisible(true);
     }                                      
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) { 
+        JOptionPane.showMessageDialog(rootPane, "Gracias por usar el sistema.", "CERRAR SESION", JOptionPane.INFORMATION_MESSAGE);                                        
         System.exit(0);
     }                                        
 

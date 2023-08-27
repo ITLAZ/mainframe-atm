@@ -77,7 +77,7 @@ public class deposito extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         double mon = Double.parseDouble(monto.getText().toString());
         Funciones f = new Funciones();
-        if (f.deposito(mon)){
+        if (mon>0 && f.deposito(mon)){
             JOptionPane.showMessageDialog(rootPane, "Deposito realizado exitosamente", "CONFIRMACION", JOptionPane.INFORMATION_MESSAGE);
         } else{
             JOptionPane.showMessageDialog(rootPane, "No se pudo efectuar el deposito", "ERROR", JOptionPane.ERROR_MESSAGE);

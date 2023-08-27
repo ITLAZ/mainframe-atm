@@ -82,7 +82,7 @@ public class retiro extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         double mon = Double.parseDouble(monto.getText().toString());
         Funciones f = new Funciones();
-        if(f.retiro(mon)){
+        if(mon>0 && f.retiro(mon)){
             JOptionPane.showMessageDialog(rootPane, "Retiro realizado exitosamente", "CONFIRMACION", JOptionPane.INFORMATION_MESSAGE);
         } else{
             JOptionPane.showMessageDialog(rootPane, "No se pudo efectuar el retiro", "ERROR", JOptionPane.ERROR_MESSAGE);
