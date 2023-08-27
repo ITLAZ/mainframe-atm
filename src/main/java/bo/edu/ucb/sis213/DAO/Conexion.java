@@ -1,4 +1,4 @@
-package bo.edu.ucb.sis213;
+package bo.edu.ucb.sis213.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
